@@ -56,9 +56,9 @@ class TestMainCLI(unittest.TestCase):
         self.assertTrue(out_file.exists())
 
         wb = openpyxl.load_workbook(out_file)
-        self.assertEqual(wb["Summary"].max_row, 2)
-        self.assertEqual(wb["Summary"].cell(row=2, column=2).value, "CLI-001")
-        self.assertEqual(wb["Summary"].cell(row=2, column=1).value, "PASS")
+        self.assertEqual(wb["Özet"].max_row, 2)
+        self.assertEqual(wb["Özet"].cell(row=2, column=2).value, "CLI-001")
+        self.assertEqual(wb["Özet"].cell(row=2, column=1).value, "BAŞARILI")
 
     def test_default_output_filename(self):
         """CLI without output path creates 'invoice_audit_report.xlsx' in working directory."""
@@ -71,7 +71,7 @@ class TestMainCLI(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             self.assertTrue(default_file.exists())
             wb = openpyxl.load_workbook(default_file)
-            self.assertIn("Summary", wb.sheetnames)
+            self.assertIn("Özet", wb.sheetnames)
         finally:
             if default_file.exists():
                 try:
@@ -90,7 +90,7 @@ class TestMainCLI(unittest.TestCase):
         self.assertTrue(out_file.exists())
 
         wb = openpyxl.load_workbook(out_file)
-        self.assertEqual(wb["Summary"].max_row, 3)  # Header + 2 invoices
+        self.assertEqual(wb["Özet"].max_row, 3)  # Header + 2 invoices
 
     def test_zip_input(self):
         """CLI with ZIP file containing XMLs succeeds."""
@@ -105,7 +105,7 @@ class TestMainCLI(unittest.TestCase):
         self.assertTrue(out_file.exists())
 
         wb = openpyxl.load_workbook(out_file)
-        self.assertEqual(wb["Summary"].max_row, 3)
+        self.assertEqual(wb["Özet"].max_row, 3)
 
     def test_missing_source_fails(self):
         """CLI with non-existent source returns exit code 1."""
@@ -144,7 +144,7 @@ class TestMainCLI(unittest.TestCase):
         self.assertTrue(out_file.exists())
 
         wb = openpyxl.load_workbook(out_file)
-        self.assertEqual(wb["Summary"].cell(row=2, column=1).value, "REVIEW")
+        self.assertEqual(wb["Özet"].cell(row=2, column=1).value, "İNCELEME GEREKLİ")
 
     def test_error_invoice_handled_gracefully(self):
         """Batch containing corrupted XML records error in Excel and returns exit code 0."""
@@ -160,10 +160,10 @@ class TestMainCLI(unittest.TestCase):
         self.assertTrue(out_file.exists())
 
         wb = openpyxl.load_workbook(out_file)
-        ws_s = wb["Summary"]
+        ws_s = wb["Özet"]
         statuses = [ws_s.cell(row=r, column=1).value for r in range(2, ws_s.max_row + 1)]
-        self.assertIn("PASS", statuses)
-        self.assertIn("ERROR", statuses)
+        self.assertIn("BAŞARILI", statuses)
+        self.assertIn("HATA", statuses)
 
     @patch("gui.launch_gui")
     def test_entrypoint_no_args_launches_gui(self, mock_launch):

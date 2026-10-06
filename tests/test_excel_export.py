@@ -64,18 +64,18 @@ class TestExcelExport(unittest.TestCase):
 
         # Load workbook
         wb = openpyxl.load_workbook(saved)
-        self.assertEqual(wb.sheetnames, ["Summary", "Lines", "Audit Details"])
+        self.assertEqual(wb.sheetnames, ["Özet", "Fatura Kalemleri", "Denetim Detayları"])
 
         # 1. Summary Sheet Checks
-        ws_s = wb["Summary"]
+        ws_s = wb["Özet"]
         self.assertEqual(ws_s.max_row, 29)  # 1 header + 28 invoice rows
         self.assertEqual(ws_s.freeze_panes, "A2")
         self.assertIsNotNone(ws_s.auto_filter.ref)
 
         statuses = [ws_s.cell(row=r, column=1).value for r in range(2, 30)]
-        self.assertEqual(statuses.count("PASS"), 26)
-        self.assertEqual(statuses.count("REVIEW"), 2)
-        self.assertEqual(statuses.count("ERROR"), 0)
+        self.assertEqual(statuses.count("BAŞARILI"), 26)
+        self.assertEqual(statuses.count("İNCELEME GEREKLİ"), 2)
+        self.assertEqual(statuses.count("HATA"), 0)
 
         # Check numeric and date formats on row 2
         payable_cell = ws_s.cell(row=2, column=6)
@@ -87,7 +87,7 @@ class TestExcelExport(unittest.TestCase):
         self.assertEqual(date_cell.number_format, "yyyy-mm-dd")
 
         # 2. Lines Sheet Checks
-        ws_l = wb["Lines"]
+        ws_l = wb["Fatura Kalemleri"]
         self.assertEqual(ws_l.max_row, 103)  # 1 header + 102 line items
         self.assertEqual(ws_l.freeze_panes, "A2")
         self.assertIsNotNone(ws_l.auto_filter.ref)
@@ -98,7 +98,7 @@ class TestExcelExport(unittest.TestCase):
         self.assertEqual(price_cell.number_format, "#,##0.00")
 
         # 3. Audit Details Sheet Checks
-        ws_a = wb["Audit Details"]
+        ws_a = wb["Denetim Detayları"]
         self.assertEqual(ws_a.max_row, 141)  # 1 header + 140 checks (5 * 28)
         self.assertEqual(ws_a.freeze_panes, "A2")
         self.assertIsNotNone(ws_a.auto_filter.ref)
@@ -117,7 +117,7 @@ class TestExcelExport(unittest.TestCase):
         export_to_excel(results, output_path)
 
         wb = openpyxl.load_workbook(output_path)
-        ws_s = wb["Summary"]
+        ws_s = wb["Özet"]
         self.assertEqual(ws_s.max_row, 3)
 
         for row_idx in (2, 3):
@@ -138,21 +138,21 @@ class TestExcelExport(unittest.TestCase):
         export_to_excel(results, output_path)
 
         wb = openpyxl.load_workbook(output_path)
-        ws_s = wb["Summary"]
+        ws_s = wb["Özet"]
         self.assertEqual(ws_s.max_row, 3)
 
-        # First row is PASS
-        self.assertEqual(ws_s.cell(row=2, column=1).value, "PASS")
-        # Second row is ERROR
-        self.assertEqual(ws_s.cell(row=3, column=1).value, "ERROR")
+        # First row is PASS / BAŞARILI
+        self.assertEqual(ws_s.cell(row=2, column=1).value, "BAŞARILI")
+        # Second row is ERROR / HATA
+        self.assertEqual(ws_s.cell(row=3, column=1).value, "HATA")
         self.assertIn("ParseError", str(ws_s.cell(row=3, column=13).value))
 
         # Check Audit Details sheet records the error
-        ws_a = wb["Audit Details"]
+        ws_a = wb["Denetim Detayları"]
         error_rows = [
             ws_a.cell(row=r, column=5).value
             for r in range(2, ws_a.max_row + 1)
-            if ws_a.cell(row=r, column=5).value == "ERROR"
+            if ws_a.cell(row=r, column=5).value == "HATA"
         ]
         self.assertEqual(len(error_rows), 1)
 
@@ -162,7 +162,7 @@ class TestExcelExport(unittest.TestCase):
         export_to_excel([], output_path)
 
         wb = openpyxl.load_workbook(output_path)
-        self.assertEqual(wb.sheetnames, ["Summary", "Lines", "Audit Details"])
+        self.assertEqual(wb.sheetnames, ["Özet", "Fatura Kalemleri", "Denetim Detayları"])
         for name in wb.sheetnames:
             ws = wb[name]
             self.assertEqual(ws.max_row, 1)  # Only header
@@ -178,7 +178,7 @@ class TestExcelExport(unittest.TestCase):
         export_to_excel(results, output_path)
 
         wb = openpyxl.load_workbook(output_path)
-        ws_l = wb["Lines"]
+        ws_l = wb["Fatura Kalemleri"]
         self.assertEqual(ws_l.max_row, 2)
 
         # Allowance (col 9) and Charge (col 10) should be None

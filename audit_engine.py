@@ -26,7 +26,7 @@ def audit_invoice(invoice):
             "calculated": None,
             "declared": tax_inclusive,
             "difference": None,
-            "message": "Required tax totals are not fully available."
+            "message": "Gerekli vergi toplamları faturada eksiksiz mevcut değil."
         }
     else:
         calculated_gross = tax_exclusive + tax_total
@@ -40,10 +40,10 @@ def audit_invoice(invoice):
             "declared": tax_inclusive,
             "difference": difference,
             "message": (
-                "Tax exclusive plus tax total matches tax inclusive total."
+                "Vergi hariç tutar ile vergi toplamı, vergi dahil tutarla tam uyuşuyor."
                 if passed
                 else
-                "Tax exclusive plus tax total does not match tax inclusive total."
+                "Vergi hariç tutar ile vergi toplamı, vergi dahil tutarla uyuşmuyor."
             )
         }
 
@@ -63,7 +63,7 @@ def audit_invoice(invoice):
             "calculated": tax_inclusive,
             "declared": payable,
             "difference": None,
-            "message": "Tax inclusive or payable total is not available."
+            "message": "Vergi dahil toplam veya ödenecek tutar faturada mevcut değil."
         }
     else:
         difference = tax_inclusive - payable
@@ -76,10 +76,10 @@ def audit_invoice(invoice):
             "declared": payable,
             "difference": difference,
             "message": (
-                "Tax inclusive total matches payable amount."
+                "Vergi dahil toplam tutar, ödenecek tutarla tam uyuşuyor."
                 if passed
                 else
-                "Tax inclusive total does not match payable amount."
+                "Vergi dahil toplam tutar, ödenecek tutarla uyuşmuyor."
             )
         }
 
@@ -107,7 +107,7 @@ def audit_invoice(invoice):
             "calculated": None,
             "declared": declared_tax_total,
             "difference": None,
-            "message": "Line-level VAT amounts are not fully available."
+            "message": "Kalem bazlı KDV tutarları faturada eksiksiz mevcut değil."
         }
     else:
         calculated_vat_total = sum(line_vat_amounts)
@@ -121,10 +121,10 @@ def audit_invoice(invoice):
             "declared": declared_tax_total,
             "difference": difference,
             "message": (
-                "Line VAT total matches declared tax total."
+                "Kalem KDV tutarları toplamı, beyan edilen vergi toplamıyla tam uyuşuyor."
                 if passed
                 else
-                "Line VAT total does not match declared tax total."
+                "Kalem KDV tutarları toplamı, beyan edilen vergi toplamıyla uyuşmuyor."
             )
         }
 
@@ -144,7 +144,7 @@ def audit_invoice(invoice):
             "calculated": actual_lines,
             "declared": None,
             "difference": None,
-            "message": "Expected line count is not available."
+            "message": "Beyan edilen beklenen kalem sayısı faturada mevcut değil."
         })
     else:
         difference = actual_lines - expected_lines
@@ -157,10 +157,10 @@ def audit_invoice(invoice):
             "declared": expected_lines,
             "difference": difference,
             "message": (
-                "Parsed line count matches declared line count."
+                "Ayrıştırılan kalem sayısı, beyan edilen kalem sayısıyla tam uyuşuyor."
                 if passed
                 else
-                "Parsed line count differs from declared line count."
+                "Ayrıştırılan kalem sayısı, beyan edilen kalem sayısından farklı."
             )
         })
 
@@ -183,7 +183,7 @@ def audit_invoice(invoice):
             "calculated": None,
             "declared": declared_line_total,
             "difference": None,
-            "message": "Line totals are not fully available."
+            "message": "Kalem satır tutarları faturada eksiksiz mevcut değil."
         })
     else:
         calculated_line_total = sum(line_totals)
@@ -197,10 +197,10 @@ def audit_invoice(invoice):
             "declared": declared_line_total,
             "difference": difference,
             "message": (
-                "Calculated line total matches declared line extension."
+                "Hesaplanan kalem satırları toplamı, beyan edilen mal/hizmet toplamıyla tam uyuşuyor."
                 if passed
                 else
-                "Calculated line total differs from declared line extension."
+                "Hesaplanan kalem satırları toplamı, beyan edilen mal/hizmet toplamından farklı."
             )
         })
 
