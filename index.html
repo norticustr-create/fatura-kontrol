@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fatura Kontrol | Ücretsiz UBL 2.1 e-Fatura Denetim ve Excel Raporlama Aracı</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Gelen UBL 2.1 XML e-faturalarınızı topluca denetleyin. KDV matrahı, oranları ve ödenecek tutar matematiksel hesaplamalarını doğrulayın, filtrelenebilir Excel raporuna dönüştürün. Windows için yerel, çevrimdışı ve ücretsiz.">
+  <meta name="keywords" content="e-fatura denetim, UBL 2.1, fatura kontrol, XML fatura, e-arşiv, toplu fatura doğrulama, KDV hesaplama, excel raporu, muhasebe yazılımı, windows fatura aracı">
+  <meta name="author" content="Fatura Kontrol">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://norticustr-create.github.io/fatura-kontrol/">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:url" content="https://norticustr-create.github.io/fatura-kontrol/">
+  <meta property="og:title" content="Fatura Kontrol | Ücretsiz UBL 2.1 e-Fatura Denetim ve Excel Raporlama Aracı">
+  <meta property="og:description" content="Gelen tedarikçi e-faturalarını topluca denetleyin. KDV ve ödenecek tutar matematiksel uyumsuzluklarını tespit edip Excel'e aktarın. Yerel, çevrimdışı ve kurulumsuz.">
+  <meta property="og:image" content="https://norticustr-create.github.io/fatura-kontrol/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fatura Kontrol | Ücretsiz UBL 2.1 e-Fatura Denetim Aracı">
+  <meta name="twitter:description" content="UBL 2.1 XML faturalarında KDV ve genel toplam denetimlerini topluca yapın, profesyonel Excel raporu oluşturun.">
+  <meta name="twitter:image" content="https://norticustr-create.github.io/fatura-kontrol/og-image.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- 
+    ==========================================================================
+    GOOGLE ANALYTICS CONFIGURATION POINT
+    To enable Google Analytics (GA4), uncomment the script tag below and
+    replace 'G-XXXXXXXXXX' with your Google Analytics Measurement ID.
+    ==========================================================================
+  -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+</head>
+<body>
+
+  <!-- Site Header & Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Fatura Kontrol Ana Sayfa">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <path d="m9 15 2 2 4-4"></path>
+          </svg>
+        </div>
+        <span>Fatura Kontrol</span>
+      </a>
+
+      <nav aria-label="Ana Gezinti">
+        <ul class="nav-links">
+          <li><a href="#ozellikler" class="nav-link">Özellikler</a></li>
+          <li><a href="#nasil-calisir" class="nav-link">Nasıl Çalışır?</a></li>
+          <li><a href="#excel-raporu" class="nav-link">Excel Raporu</a></li>
+          <li><a href="#guvenlik" class="nav-link">Gizlilik & Çalışma Modeli</a></li>
+          <li><a href="#sss" class="nav-link">SSS</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://github.com/norticustr-create/fatura-kontrol/releases/latest/download/FaturaKontrol.exe" class="btn btn-primary btn-sm" aria-label="Fatura Kontrol İndir">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Ücretsiz İndir</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span>Windows 10 / 11 • Yerel ve Çevrimdışı • Ücretsiz & Açık Kaynak</span>
+        </div>
+
+        <h1 class="hero-title">
+          e-Faturalarınızı topluca <span>denetleyin</span> ve Excel'e aktarın.
+        </h1>
+
+        <p class="hero-subtitle">
+          UBL 2.1 XML faturalarınızı tek tek veya topluca (klasör / ZIP) tarayın. KDV, toplam ve ödenecek tutar hesaplarındaki uyumsuzlukları tespit edip sonuçları detaylı Excel çalışma kitabına aktarın.
+        </p>
+
+        <!-- Top Download Call-to-Action -->
+        <div class="hero-cta-group">
+          <a href="https://github.com/norticustr-create/fatura-kontrol/releases/latest/download/FaturaKontrol.exe" class="btn btn-primary btn-lg" id="download-top" aria-label="Fatura Kontrol v0.1.0 İndir">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Hemen İndir (Windows 64-bit)</span>
+          </a>
+        </div>
+
+        <div class="hero-trust-row">
+          <div class="trust-item">
+            <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Kurulum gerektirmez (Taşınabilir .exe)</span>
+          </div>
+          <div class="trust-item">
+            <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verileriniz bilgisayarınızda kalır (Çevrimdışı)</span>
+          </div>
+          <div class="trust-item">
+            <svg class="trust-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Tek tıkla Excel (.xlsx) çıktısı</span>
+          </div>
+        </div>
+
+        <!-- Application Screenshot -->
+        <div class="app-screenshot-wrapper" aria-label="Uygulama Ekran Görüntüsü">
+          <img 
+            src="screenshot.png" 
+            alt="Fatura Kontrol masaüstü uygulaması denetim özeti ekranı" 
+            class="app-screenshot-img" 
+            width="1919" 
+            height="1029" 
+            loading="eager"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section class="section" id="ozellikler">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Neden Fatura Kontrol?</div>
+          <h2 class="section-title">Manuel e-Fatura Kontrolü Tarihe Karışıyor</h2>
+          <p class="section-desc">
+            Ay sonunda yüzlerce e-fatura XML dosyasını tek tek açıp matrah, KDV toplamı ve ödenecek tutar dengelerini elle kontrol etmek hem saatler alır hem de gözden kaçan kuruşluk hatalar KDV beyannamesinde uyumsuzluklara yol açar.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Toplu XML ve ZIP Desteği</h3>
+            <p class="feature-desc">
+              GİB portalından veya entegratörden indirdiğiniz ZIP arşivlerini çıkartmanıza gerek yok. Fatura Kontrol arşiv içindeki tüm faturaları otomatik ayrıştırır.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Kuruş Kuruş KDV Doğrulaması</h3>
+            <p class="feature-desc">
+              Kalem bazında hesaplanan KDV ile beyan edilen genel KDV toplamı arasındaki farkları ±0.02 ₺ yasal toleransla kontrol eder. Hatalı faturaları anında işaretler.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">3 Sayfalı Excel Raporu</h3>
+            <p class="feature-desc">
+              Sonuçlar sadece ekranda kalmaz. Özet, Kalemler ve Denetim Detayları sayfaları içeren, filtreleri hazır, kurumsal bir Excel tablosuna otomatik aktarılır.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon-wrapper" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Yerel ve Çevrimdışı Çalışma</h3>
+            <p class="feature-desc">
+              Ticari faturalarınız harici bir bulut sunucusuna gönderilmez. Tüm ayrıştırma ve denetim işlemleri yerel bilgisayarınızda çevrimdışı olarak gerçekleştirilir.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section section-alt" id="nasil-calisir">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Kolay Kullanım</div>
+          <h2 class="section-title">3 Adımda Toplu Fatura Denetimi</h2>
+          <p class="section-desc">
+            Karmaşık kurulumlar, veritabanı ayarları veya lisans anahtarları gerekmez. İndirin ve doğrudan çalıştırın.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">1</div>
+            <h3 class="step-title">Kaynak Seçin</h3>
+            <p class="step-desc">
+              Fatura Kontrol'ü açın. Tek bir XML dosyası, yüzlerce XML içeren bir klasör ya da portaldan indirdiğiniz fatura ZIP arşivini seçin.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">2</div>
+            <h3 class="step-title">Denetimi Başlatın</h3>
+            <p class="step-desc">
+              "Faturaları Denetle ve Raporla" butonuna tıklayın. Gelişmiş ayrıştırma motoru tüm faturaları baştan sona inceler.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number" aria-hidden="true">3</div>
+            <h3 class="step-title">Excel'de İnceleyin</h3>
+            <p class="step-desc">
+              Oluşturulan Excel raporunu tek tıkla açın. <strong>PASS</strong> (Geçen) ve <strong>REVIEW</strong> (İncelenmesi Gereken) faturaları filtreleyerek hızlıca aksiyon alın.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Excel Output Feature Details -->
+    <section class="section section-alt" id="excel-raporu">
+      <div class="container">
+        <div class="excel-feature-box">
+          <div>
+            <div class="section-tag">Muhasebeye Hazır Çıktı</div>
+            <h2 class="section-title">Standart ve Filtrelenebilir Excel Raporu</h2>
+            <p class="section-desc">
+              Düzenli, filtrelenebilir ve muhasebe süreçlerinde kullanılabilecek bir Excel çalışma kitabı oluşturur.
+            </p>
+
+            <div class="excel-sheet-list">
+              <div class="excel-sheet-item">
+                <span class="sheet-badge">Sayfa 1: Summary</span>
+                <div class="sheet-info">
+                  <h4>Fatura Genel Özeti</h4>
+                  <p>Durum (PASS/REVIEW), fatura numarası, düzenleme tarihi, tedarikçi adı, para birimi, ödenecek tutar, satır sayısı ve kaynak dosya adı.</p>
+                </div>
+              </div>
+
+              <div class="excel-sheet-item">
+                <span class="sheet-badge">Sayfa 2: Lines</span>
+                <div class="sheet-info">
+                  <h4>Kalem ve Ürün Detayları</h4>
+                  <p>Faturadaki tüm ürün satırları; satıcı ürün kodu, miktar, birim fiyat, satır toplamı, KDV oranı ve satır KDV tutarı.</p>
+                </div>
+              </div>
+
+              <div class="excel-sheet-item">
+                <span class="sheet-badge">Sayfa 3: Audit Details</span>
+                <div class="sheet-info">
+                  <h4>Matematiksel Denetim Günlüğü</h4>
+                  <p>Fatura bazında çalıştırılan her kontrolün hesaplanan değeri, faturadaki beyan değeri, fark tutarı ve teknik açıklama.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="excel-highlights-card">
+              <h3 class="excel-highlights-title">Excel Raporunun Öne Çıkan Özellikleri</h3>
+              <ul style="padding-left: 20px; font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.8;">
+                <li><strong>Dondurulmuş Başlık Satırları:</strong> Aşağı kaydırdığınızda sütun başlıkları daima görünür kalır.</li>
+                <li><strong>Otomatik Filtreler:</strong> Sadece "REVIEW" veya "PASS" olan faturaları tek tıkla filtreleyin.</li>
+                <li><strong>Muhasebe Sayı Formatı:</strong> Parasal tutarlar metin olarak değil, <code>#,##0.00</code> formatında sayısal olarak saklanır.</li>
+                <li><strong>ZIP Kaynak Takibi:</strong> ZIP arşivinden okunan faturaların hangi arşivden çıktığı raporda ayrı bir sütunda tutulur.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy & Working Model Section -->
+    <section class="section" id="guvenlik">
+      <div class="container">
+        <div class="privacy-banner">
+          <div class="section-header" style="color: #ffffff; margin-bottom: 36px;">
+            <div class="section-tag" style="color: #38bdf8;">Çalışma Prensibi ve Gizlilik</div>
+            <h2 class="section-title" style="color: #ffffff;">Mali Verileriniz Bilgisayarınızda Kalır</h2>
+            <p class="section-desc" style="color: #94a3b8;">
+              Fatura Kontrol, ticari mahremiyeti korumak üzere tamamen yerel ve çevrimdışı çalışacak şekilde tasarlanmıştır.
+            </p>
+          </div>
+
+          <div class="privacy-grid">
+            <div class="privacy-item">
+              <h3>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                <span>Masaüstü Uygulamasında Sıfır Telemetri</span>
+              </h3>
+              <p>
+                Fatura Kontrol masaüstü uygulaması hiçbir arka plan telemetrisi, kullanım analitiği veya hata raporlama verisi göndermez; internet bağlantısına ihtiyaç duymaz. Faturalarınız, tedarikçi unvanları, tutarlar veya ürün kalemleri hiçbir uzak sunucuya aktarılmaz.
+              </p>
+            </div>
+
+            <div class="privacy-item">
+              <h3>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                <span>Taşınabilir Tek Dosya (Portable EXE)</span>
+              </h3>
+              <p>
+                Sistem yöneticisi yetkisi veya kurulum sihirbazı gerekmez. İndirdiğiniz <code>FaturaKontrol.exe</code> dosyasını doğrudan çalıştırabilir, işiniz bitince silebilir veya USB belleğinizde taşıyabilirsiniz.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="sss">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Aklınıza Takılabilecekler</div>
+          <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+          <p class="section-desc">
+            Fatura Kontrol hakkında merak edilen teknik ve kullanım detayları.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-question">Fatura Kontrol ücretli mi? Herhangi bir gizli maliyet var mı?</summary>
+            <div class="faq-answer">
+              Hayır. Fatura Kontrol tamamen ücretsiz, reklamsız ve açık kaynaklı bir masaüstü yazılımıdır. Lisans ücreti, fatura başı ödeme veya abonelik bulunmamaktadır.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Faturalarım internet üzerinden bir sunucuya yükleniyor mu?</summary>
+            <div class="faq-answer">
+              Hayır. Masaüstü yazılımı yerel ve çevrimdışı (offline) çalışır. Bilgisayarınızın internet bağlantısı olmasa dahi tüm faturaları sorunsuzca tarayabilir ve Excel raporu oluşturabilirsiniz.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Hangi e-fatura formatlarını destekler?</summary>
+            <div class="faq-answer">
+              Türkiye Gelir İdaresi Başkanlığı (GİB) standartlarına uygun UBL 2.1 TR formatındaki tüm e-Fatura ve e-Arşiv XML dosyalarını destekler. Tekil XML dosyaları, XML içeren klasörler ve doğrudan portal veya entegratörden indirilen ZIP arşivleri taranabilir.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Programı çalıştırmak için Python veya başka bir yazılım kurmam gerekir mi?</summary>
+            <div class="faq-answer">
+              Hayır. Dağıtılan <code>FaturaKontrol.exe</code> dosyası tek parça, taşınabilir bir Windows çalıştırılabilir dosyasıdır. Python veya ek kütüphane kurmanıza gerek yoktur.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Komut satırından (CLI) toplu iş çalıştırmak mümkün mü?</summary>
+            <div class="faq-answer">
+              Evet. Fatura Kontrol hem GUI hem CLI moduna sahiptir. Terminal veya PowerShell üzerinden:<br>
+              <code>FaturaKontrol.exe faturalar/ aylik_rapor.xlsx</code><br>
+              komutunu vererek arayüz açılmadan doğrudan denetim yapabilir ve komut çıkış kodunu (exit code) betiklerinizde kullanabilirsiniz.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-question">Mac veya Linux işletim sistemlerinde çalışır mı?</summary>
+            <div class="faq-answer">
+              Hazır derlenmiş <code>.exe</code> dosyası 64-bit Windows içindir. Ancak projenin Python kaynak kodları açık kaynaklı ve platform bağımsızdır. macOS ve Linux sistemlerinde Python 3.10+ ve <code>openpyxl</code> kütüphanesiyle doğrudan çalıştırılabilir.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Download CTA Section -->
+    <section class="cta-section" id="indir">
+      <div class="container cta-box">
+        <h2 class="cta-title">Tedarikçi Faturalarınızı Hata ve Uyuşmazlıklara Karşı Bugün Denetleyin</h2>
+        <p class="cta-desc">
+          Fatura Kontrol v0.1.0'ı ücretsiz indirin; karmaşık kurulumlarla uğraşmadan dakikalar içinde yüzlerce faturanızı denetleyin.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="https://github.com/norticustr-create/fatura-kontrol/releases/latest/download/FaturaKontrol.exe" class="btn btn-cta" id="download-bottom" aria-label="Fatura Kontrol v0.1.0 İndir">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Fatura Kontrol'ü İndir (v0.1.0 - EXE)</span>
+          </a>
+        </div>
+
+        <div class="cta-meta">
+          Windows 10 / 11 (64-bit) • Taşınabilir Tek Dosya • Boyut: ~22.6 MB • Açık Kaynak
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Newsletter / Optional Notification Section -->
+    <section class="section newsletter-section" id="bulten">
+      <div class="container newsletter-container">
+        <div class="newsletter-card">
+          <div class="newsletter-header">
+            <div class="newsletter-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h2 class="newsletter-title">Yeni araçlarımızdan haberdar olun</h2>
+            <p class="newsletter-desc">
+              Yeni yazılımlarımızı ve faydalı araçlarımızı yayınladığımızda haber verelim.
+            </p>
+          </div>
+
+          <!--
+            ==========================================================================
+            EMAIL SERVICE INTEGRATION POINT
+            This form is currently a visual placeholder and does not submit data.
+            When connecting an email marketing service or backend endpoint
+            (e.g., Formspree, Mailchimp, Buttondown, Brevo, or custom API):
+            1. Update 'action' to your provider endpoint URL.
+            2. Set 'method="POST"'.
+            3. Add appropriate input 'name' (e.g. name="email").
+            ==========================================================================
+          -->
+          <form class="newsletter-form" action="#" method="get" aria-label="Yeni araç bildirim formu">
+            <div class="newsletter-input-group">
+              <input 
+                type="email" 
+                class="newsletter-input" 
+                placeholder="E-posta adresiniz" 
+                aria-label="E-posta adresiniz" 
+                required
+              >
+              <button type="submit" class="btn btn-primary newsletter-btn">
+                <span>Abone Ol</span>
+              </button>
+            </div>
+          </form>
+
+          <p class="newsletter-note">
+            Bu alan isteğe bağlı bir bildirim listesidir. Fatura Kontrol'ü indirmek ve kullanmak için kesinlikle hesap açmanız veya e-posta adresi paylaşmanız gerekmez.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <path d="m9 15 2 2 4-4"></path>
+            </svg>
+            <span>Fatura Kontrol</span>
+          </div>
+          <p>
+            Türkiye UBL 2.1 e-Fatura ve e-Arşiv XML dosyaları için hafif, hızlı, yerel ve çevrimdışı toplu denetim ve Excel raporlama aracı.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Alt Bilgi Bağlantıları">
+          <div class="footer-nav-col">
+            <h4>Yazılım</h4>
+            <ul>
+              <li><a href="https://github.com/norticustr-create/fatura-kontrol/releases/latest/download/FaturaKontrol.exe">Windows için İndir</a></li>
+              <li><a href="https://github.com/norticustr-create/fatura-kontrol/releases">Sürüm Notları (v0.1.0)</a></li>
+              <li><a href="#nasil-calisir">Nasıl Çalışır?</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Açık Kaynak</h4>
+            <ul>
+              <li><a href="https://github.com/norticustr-create/fatura-kontrol" target="_blank" rel="noopener noreferrer">GitHub Deposu</a></li>
+              <li><a href="https://github.com/norticustr-create/fatura-kontrol/issues" target="_blank" rel="noopener noreferrer">Sorun Bildir (Issues)</a></li>
+              <li><a href="https://github.com/norticustr-create/fatura-kontrol/blob/main/README.md" target="_blank" rel="noopener noreferrer">Dokümantasyon</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4>Gizlilik & Çalışma</h4>
+            <ul>
+              <li><a href="#guvenlik">Gizlilik Prensibi</a></li>
+              <li><a href="#guvenlik">Yerel ve Çevrimdışı Çalışma</a></li>
+              <li><a href="#sss">Sıkça Sorulan Sorular</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Fatura Kontrol. Özgür ve açık kaynaklı yazılım.
+        </div>
+        <div>
+          Windows, Microsoft Corporation'ın tescilli ticari markasıdır.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
