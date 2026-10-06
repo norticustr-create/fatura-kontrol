@@ -38,7 +38,7 @@ class InvoiceAuditorGUI:
 
     def __init__(self, root: tk.Tk):
         self.root = root
-        self.root.title("Tedarikçi Fatura Denetçisi (UBL 2.1 e-Fatura)")
+        self.root.title("Fatura Kontrol (UBL 2.1 e-Fatura)")
         self.root.geometry("700x580")
         self.root.minsize(640, 520)
 

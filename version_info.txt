@@ -1,10 +1,10 @@
 # UTF-8
 #
-# Supplier Invoice Auditor - Windows Version Info Resource
-# Product name: Tedarikçi Fatura Denetçisi
-# Internal name: Supplier Invoice Auditor
+# Fatura Kontrol - Windows Version Info Resource
+# Product name: Fatura Kontrol
+# Internal name: Fatura Kontrol
 # Version: 0.1.0
-# Description: UBL 2.1 Turkish e-Invoice Auditor
+# Description: UBL 2.1 Fatura Kontrol ve Excel Raporlama Aracı
 #
 
 VSVersionInfo(
@@ -25,12 +25,12 @@ VSVersionInfo(
           '040904b0',
           [
             StringStruct('CompanyName', ''),
-            StringStruct('FileDescription', 'UBL 2.1 Turkish e-Invoice Auditor'),
+            StringStruct('FileDescription', 'UBL 2.1 Fatura Kontrol ve Excel Raporlama Aracı'),
             StringStruct('FileVersion', '0.1.0'),
-            StringStruct('InternalName', 'Supplier Invoice Auditor'),
+            StringStruct('InternalName', 'Fatura Kontrol'),
             StringStruct('LegalCopyright', ''),
-            StringStruct('OriginalFilename', 'invoice-auditor.exe'),
-            StringStruct('ProductName', 'Tedarikçi Fatura Denetçisi'),
+            StringStruct('OriginalFilename', 'FaturaKontrol.exe'),
+            StringStruct('ProductName', 'Fatura Kontrol'),
             StringStruct('ProductVersion', '0.1.0'),
           ]
         )

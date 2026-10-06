@@ -39,6 +39,7 @@ class TestInvoiceAuditorGUI(unittest.TestCase):
 
     def test_gui_initial_state(self):
         """Verify initial UI variables and defaults."""
+        self.assertEqual(self.root.title(), "Fatura Kontrol (UBL 2.1 e-Fatura)")
         self.assertEqual(self.app.source_var.get(), "")
         self.assertEqual(self.app.output_var.get(), "invoice_audit_report.xlsx")
         self.assertEqual(self.app.total_count_var.get(), "0")
@@ -96,7 +97,7 @@ class TestInvoiceAuditorGUI(unittest.TestCase):
             self.assertEqual(self.app.pass_count_var.get(), "1")
             self.assertEqual(self.app.review_count_var.get(), "0")
             self.assertEqual(self.app.error_count_var.get(), "0")
-            self.assertEqual(self.app.last_saved_path, str(out_file))
+            self.assertEqual(Path(self.app.last_saved_path).resolve(), Path(out_file).resolve())
 
 
 if __name__ == "__main__":
